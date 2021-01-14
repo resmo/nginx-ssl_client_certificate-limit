@@ -9,6 +9,7 @@ create-cacert:
 	openssl req -subj "/C=GB/CN=tls" -passin pass:$(pass) -new -x509 -days 365 -key ca.key -out ca.crt
 	openssl req -subj "/C=GB/CN=ca1" -passin pass:$(pass) -new -x509 -days 365 -key ca1.key -out auth_ca1.crt
 	openssl req -subj "/C=GB/CN=ca2" -passin pass:$(pass) -new -x509 -days 365 -key ca2.key -out auth_ca2.crt
+	cat auth_ca1.crt auth_ca2.crt > auth_ca.crt
 
 .PHONY: create-clientcert1
 create-clientcert1:
